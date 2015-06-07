@@ -1,0 +1,72 @@
+#!/bin/bash
+
+if [[ -z "$NODEJS_VERSION" ]]; then
+  NODEJS_VERSION="v2.2.1"
+fi
+if [[ -z "$NPM_VERSION" ]]; then
+  NPM_VERSION="2.11.2"
+fi
+NODEJS_BASE_URL="https://iojs.org/dist/$NODEJS_VERSION"
+ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+
+function install_program() {
+  local program_name=$1
+  local desired_version=$2
+  local custom_install=$3
+  local install_path="$ROOT/$program_name/$desired_version"
+  local binary_path="$install_path/bin/$program_name"
+  local version=""
+
+  if [[ -x "$binary_path" ]]; then
+    version="$($binary_path --version)"
+    if [[ "$version" == "$desired_version" ]]; then
+      return
+    fi
+
+    rm -rf $install_path
+  fi
+
+  mkdir -p $install_path
+  cd $install_path
+  $custom_install
+  cd -
+
+  version="$($binary_path --version)"
+  if [[ "$version" != "$desired_version" ]]; then
+    echo "envy: Error installing $program_name"
+    exit 1
+  fi
+}
+
+install_nodejs() {
+  local os=$(uname -s | tr "[:upper:]" "[:lower:]")
+  if [[ "$(uname -m)" == "x86_64" ]]; then
+    local arch="x64"
+  else
+    local arch="x64"
+  fi
+
+  local nodejs_url="$NODEJS_BASE_URL/iojs-$NODEJS_VERSION-$os-$arch.tar.gz"
+  curl $nodejs_url | tar -xz --strip-components 1
+}
+
+install_npm() {
+  local npm_path="$ROOT/npm/$NPM_VERSION"
+  npm_config_prefix="$npm_path" npm install -g npm@"$NPM_VERSION"
+}
+
+main() {
+  $(install_program "iojs" "$NODEJS_VERSION" install_nodejs)
+  $(install_program "npm" "$NPM_VERSION" install_npm)
+  local nodejs_path="$ROOT/iojs/$NODEJS_VERSION/bin"
+  local npm_path="$ROOT/npm/$NPM_VERSION/bin"
+  local tempfile=$(mktemp)
+  local workdir=$(pwd)
+  # TODO(gaye): Is there perhaps an easier way to run the command
+  #     with the PATH set appropriately? This seems wrong.
+  echo -e "PATH=$npm_path:$npm_path/bin:$nodejs_path:$PATH\nnpm_config_prefix=$npm_path $@" > $tempfile
+  chmod a+x $tempfile
+  exec $tempfile
+}
+
+main "$@"
