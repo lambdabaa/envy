@@ -24,10 +24,8 @@ $ NPM_VERSION=1.4.28 ./envy npm --version
 
 # npm -g will install stuff into the sandbox. No sudo required!
 $ ./envy npm install -g mocha
-/home/gareth/Documents/envy/npm/2.11.2/bin/bin/mocha ->
-/home/gareth/Documents/envy/npm/2.11.2/bin/lib/node_modules/mocha/bin/mocha
-/home/gareth/Documents/envy/npm/2.11.2/bin/bin/_mocha ->
-/home/gareth/Documents/envy/npm/2.11.2/bin/lib/node_modules/mocha/bin/_mocha
+/home/gareth/Documents/envy/npm/2.11.2/bin/bin/mocha -> /home/gareth/Documents/envy/npm/2.11.2/bin/lib/node_modules/mocha/bin/mocha
+/home/gareth/Documents/envy/npm/2.11.2/bin/bin/_mocha -> /home/gareth/Documents/envy/npm/2.11.2/bin/lib/node_modules/mocha/bin/_mocha
 mocha@2.2.5 /home/gareth/Documents/envy/npm/2.11.2/bin/lib/node_modules/mocha
 ├── escape-string-regexp@1.0.2
 ├── supports-color@1.2.1
