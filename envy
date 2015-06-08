@@ -6,8 +6,15 @@ fi
 if [[ -z "$NPM_VERSION" ]]; then
   NPM_VERSION="2.11.2"
 fi
-NODEJS_BASE_URL="https://iojs.org/dist/$NODEJS_VERSION"
+
+NODEJS_BASE_URL="http://nodejs.org/dist/$NODEJS_VERSION/node"
+IOJS_BASE_URL="https://iojs.org/dist/$NODEJS_VERSION/iojs"
 ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+
+function get_major_version() {
+  local regexp='[^0-9]*\([0-9]*\)[.]\([0-9]*\)[.]\([0-9]*\)\([0-9A-Za-z-]*\)'
+  echo $1 | sed -e "s#$regexp#\1#"
+}
 
 function install_program() {
   local program_name=$1
@@ -46,7 +53,13 @@ install_nodejs() {
     local arch="x64"
   fi
 
-  local nodejs_url="$NODEJS_BASE_URL/iojs-$NODEJS_VERSION-$os-$arch.tar.gz"
+  local major=$(get_major_version $NODEJS_VERSION)
+  if [[ $major == "0" ]]; then
+    local nodejs_url="$NODEJS_BASE_URL-$NODEJS_VERSION-$os-$arch.tar.gz"
+  else
+    local nodejs_url="$IOJS_BASE_URL-$NODEJS_VERSION-$os-$arch.tar.gz"
+  fi
+
   curl $nodejs_url | tar -xz --strip-components 1
 }
 
@@ -56,9 +69,9 @@ install_npm() {
 }
 
 main() {
-  $(install_program "iojs" "$NODEJS_VERSION" install_nodejs)
+  $(install_program "node" "$NODEJS_VERSION" install_nodejs)
   $(install_program "npm" "$NPM_VERSION" install_npm)
-  local nodejs_path="$ROOT/iojs/$NODEJS_VERSION/bin"
+  local nodejs_path="$ROOT/node/$NODEJS_VERSION/bin"
   local npm_path="$ROOT/npm/$NPM_VERSION/bin"
   local tempfile=$(mktemp)
   local workdir=$(pwd)
