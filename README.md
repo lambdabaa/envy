@@ -4,26 +4,31 @@ envy
 Inspired by
 [lightsofapollo/exhibition](https://github.com/lightsofapollo/exhibition).
 
+### Installation
+
+```bash
+npm install -g envy@latest
+```
 
 ### Usage
 
 ```bash
 # envy will download default versions of node and npm into a sandbox.
-$ ./envy node --version
+$ envy node --version
 v2.2.1
 
-$ ./envy npm --version
+$ envy npm --version
 2.11.2
 
 # Or you can configure the versions with environment variables.
-$ NODEJS_VERSION=v1.8.1 ./envy node --version
+$ NODEJS_VERSION=v1.8.1 envy node --version
 v1.8.1
 
-$ NPM_VERSION=1.4.28 ./envy npm --version
+$ NPM_VERSION=1.4.28 envy npm --version
 1.4.28
 
 # npm -g will install stuff into the sandbox. No sudo required!
-$ ./envy npm install -g mocha
+$ envy npm install -g mocha
 /home/gareth/Documents/envy/npm/2.11.2/bin/bin/mocha -> /home/gareth/Documents/envy/npm/2.11.2/bin/lib/node_modules/mocha/bin/mocha
 /home/gareth/Documents/envy/npm/2.11.2/bin/bin/_mocha -> /home/gareth/Documents/envy/npm/2.11.2/bin/lib/node_modules/mocha/bin/_mocha
 mocha@2.2.5 /home/gareth/Documents/envy/npm/2.11.2/bin/lib/node_modules/mocha
@@ -38,7 +43,7 @@ mocha@2.2.5 /home/gareth/Documents/envy/npm/2.11.2/bin/lib/node_modules/mocha
 └── glob@3.2.3 (inherits@2.0.1, graceful-fs@2.0.3, minimatch@0.2.14)
 
 # Magic!
-$ ./envy mocha --help
+$ envy mocha --help
 ```
 
 ### Profile
