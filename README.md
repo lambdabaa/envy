@@ -7,6 +7,13 @@ Inspired by
 ### Installation
 
 ```bash
+git clone https://github.com/gaye/envy.git
+// set PATH=/path/to/envy:$PATH
+```
+
+#### Slightly Fancier (if you already have some npm)
+
+```bash
 npm install -g jsenvy@latest
 ```
 
