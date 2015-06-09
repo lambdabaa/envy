@@ -7,7 +7,7 @@ Inspired by
 ### Installation
 
 ```bash
-npm install -g envy@latest
+npm install -g jsenvy@latest
 ```
 
 ### Usage
