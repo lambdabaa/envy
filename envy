@@ -7,14 +7,20 @@ if [[ -z "$NPM_VERSION" ]]; then
   NPM_VERSION="2.11.2"
 fi
 
-PROFILE_PATH="$(pwd)/.envyrc"
-if [[ -e $PROFILE_PATH ]]; then
-  source $PROFILE_PATH
-fi
-
 NODEJS_BASE_URL="http://nodejs.org/dist/$NODEJS_VERSION/node"
 IOJS_BASE_URL="https://iojs.org/dist/$NODEJS_VERSION/iojs"
 ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+
+PROFILE_DIR="$(pwd)"
+while [[ "$PROFILE_DIR" != "/" ]]; do
+  PROFILE="$PROFILE_DIR/.envyrc"
+  if [[ -e $PROFILE ]]; then
+    source $PROFILE
+    break
+  fi
+
+  PROFILE_DIR=$(cd "$PROFILE_DIR"/..; pwd)
+done
 
 function get_major_version() {
   local regexp='[^0-9]*\([0-9]*\)[.]\([0-9]*\)[.]\([0-9]*\)\([0-9A-Za-z-]*\)'
