@@ -1,0 +1,9 @@
+{
+  "name": "jsenvy",
+  "version": "0.0.1",
+  "author": "Gareth Aye [:gaye] <gaye@mozilla.com>",
+  "license": "MPL-2.0",
+  "bin": {
+    "envy": "./envy"
+  }
+}
