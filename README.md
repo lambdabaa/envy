@@ -40,3 +40,13 @@ mocha@2.2.5 /home/gareth/Documents/envy/npm/2.11.2/bin/lib/node_modules/mocha
 # Magic!
 $ ./envy mocha --help
 ```
+
+### Profile
+
+You can also specify project-specific `NODEJS_VERSION` and `NPM_VERSION`
+by adding an `.envyrc` file to your project root like this
+
+```bash
+NODEJS_VERSION=v0.12.4
+NPM_VERSION=2.11.2
+```
