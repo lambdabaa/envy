@@ -75,8 +75,9 @@ install_nodejs() {
 }
 
 install_npm() {
+  local temp_npm="$ROOT/node/$NODEJS_VERSION/bin/npm"
   local npm_path="$ROOT/npm/$NPM_VERSION"
-  npm_config_prefix="$npm_path" npm install --global --quiet npm@"$NPM_VERSION"
+  npm_config_prefix="$npm_path" $temp_npm install --global --quiet npm@"$NPM_VERSION"
 }
 
 main() {
