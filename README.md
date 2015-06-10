@@ -2,7 +2,7 @@ envy
 ====
 
 Inspired by
-[lightsofapollo/exhibition](https://github.com/lightsofapollo/exhibition).
+[lightsofapollo/exhibition](https://github.com/lightsofapollo/exhibition). Currently somewhat buggy...
 
 ### Installation
 
