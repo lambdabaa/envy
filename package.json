@@ -3,7 +3,19 @@
   "version": "0.1.1",
   "author": "Gareth Aye [:gaye] <gaye@mozilla.com>",
   "license": "MPL-2.0",
+
   "bin": {
     "envy": "./envy"
+  },
+
+  "scripts": {
+    "test": "./envy ./node_modules/.bin/mocha"
+  },
+
+  "devDependencies": {
+    "chai": "^2.2.5",
+    "chai-as-promised": "^5.1.0",
+    "mocha": "^2.2.5",
+    "mz": "^2.0.0"
   }
 }
