@@ -1,8 +1,12 @@
 envy
 ====
 
+
+[![Build
+Status](https://travis-ci.org/gaye/envy.png?branch=master)](https://travis-ci.org/gaye/envy)
+
 Inspired by
-[lightsofapollo/exhibition](https://github.com/lightsofapollo/exhibition). Currently somewhat buggy...
+[lightsofapollo/exhibition](https://github.com/lightsofapollo/exhibition).
 
 ### Installation
 
