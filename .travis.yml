@@ -2,8 +2,6 @@
 # regardless of which versions of node && npm you begin with.
 language: node_js
 node_js:
-  - "0.6"
-  - "0.8"
   - "0.10"
   - "0.11"
   - "0.12"
