@@ -54,9 +54,9 @@ suite('envy', function() {
     });
 
     test(`${time} should install packages globally into sandbox`, co.wrap(function *() {
-      var result = yield exec(`${envy} npm install -g jsenvy`);
-      var expected = `${normalize(__dirname + '/../npm/2.11.2/bin/bin/envy')}`;
-      expect(result[0]).to.include(expected);
+      yield exec(`${envy} npm install -g file:${__dirname}/fixtures/wut`);
+      var result = yield exec(`${envy} wut`);
+      expect(result[0]).to.include('wut?');
     }));
   });
 });

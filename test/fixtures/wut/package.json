@@ -1,0 +1,5 @@
+{
+  "name": "wut",
+  "version": "0.0.1",
+  "bin": "./wut"
+}
