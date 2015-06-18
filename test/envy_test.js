@@ -4,14 +4,16 @@ var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
 var co = require('co');
 var exec = require('mz/child_process').exec;
+var expect = chai.expect;
 var normalize = require('path').normalize;
 
 var envy = normalize(`${__dirname}/../envy`);
 
-chai.use(chaiAsPromised);
-var expect = chai.expect;
-
 suite('envy', function() {
+  suiteSetup(function() {
+    chai.use(chaiAsPromised);
+  });
+
   [
     'first time',
     'cached'
