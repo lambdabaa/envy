@@ -87,10 +87,9 @@ main() {
   local nodejs_path="$ROOT/node/$NODEJS_VERSION/bin"
   local npm_path="$ROOT/npm/$NPM_VERSION/bin"
   local tempfile=$(mktemp)
-  local workdir=$(pwd)
   # TODO(gaye): Is there perhaps an easier way to run the command
   #     with the PATH set appropriately? This seems wrong.
-  echo -e "PATH=$npm_path:$npm_path/bin:$nodejs_path:$PATH\nnpm_config_prefix=$npm_path $@" > $tempfile
+  echo -e "cd $PWD && PATH=$npm_path:$npm_path/bin:$nodejs_path:$PATH\nnpm_config_prefix=$npm_path $@" > $tempfile
   chmod a+x $tempfile
   exec $tempfile
 }
