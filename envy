@@ -66,10 +66,10 @@ install_nodejs() {
   fi
 
   local major=$(get_major_version $NODEJS_VERSION)
-  if [[ $major == "0" ]] || [[ $major == "4" ]]; then
-    local nodejs_url="$NODEJS_BASE_URL-$NODEJS_VERSION-$os-$arch.tar.gz"
-  else
+  if [[ $major == "1" ]] || [[ $major == "2" ]] || [[ $major == "$" ]]; then
     local nodejs_url="$IOJS_BASE_URL-$NODEJS_VERSION-$os-$arch.tar.gz"
+  else
+    local nodejs_url="$NODEJS_BASE_URL-$NODEJS_VERSION-$os-$arch.tar.gz"
   fi
 
   curl $nodejs_url | tar -xz --strip-components 1
