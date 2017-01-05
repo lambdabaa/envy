@@ -3,7 +3,7 @@ envy
 
 
 [![Build
-Status](https://travis-ci.org/gaye/envy.png?branch=master)](https://travis-ci.org/gaye/envy)
+Status](https://travis-ci.org/lambdabaa/envy.png?branch=master)](https://travis-ci.org/gaye/envy)
 
 Inspired by
 [lightsofapollo/exhibition](https://github.com/lightsofapollo/exhibition).
